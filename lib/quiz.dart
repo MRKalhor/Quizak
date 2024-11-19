@@ -27,7 +27,7 @@ class _quizpageState extends State<quizpage> {
         isLoading = false;
       });
     } catch (e) {
-      print("خطا در دریافت داده‌ها: $e");
+      print("Eror failed to take data $e");
       setState(() {
         isLoading = false;
       });
@@ -74,7 +74,7 @@ class _quizpageState extends State<quizpage> {
     if (questions.isEmpty) {
       return Scaffold(
         body: Center(
-          child: Text("خطا در دریافت سوالات"),
+          child: Text("failed to take data"),
         ),
       );
     }
@@ -85,7 +85,7 @@ class _quizpageState extends State<quizpage> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Text("Level " + questions[index]['level'] + " of 4"),
+        // title: Text("${"Level " + questions[index]['level']} of 4"),
         foregroundColor: Colors.black,
       ),
       body: Column(
