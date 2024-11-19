@@ -15,45 +15,29 @@ class _quizpageState extends State<quizpage> {
   var index = 0;
   var rightanswercount = 0;
   var falseanswercount = 0;
+  bool isLoading = true;
 
-  void FetchQuestions() {
-    //   questions = [
-    //     {
-    //       "level": "1",
-    //       "question": "what is the color of the sky?",
-    //       "options": ["red", "blue", "black", "white"],
-    //       "answerindex": 1
-    //     },
-    //     {
-    //       "level": "2",
-    //       "question": "what is the color of the moon?",
-    //       "options": ["red", "blue", "black", "white"],
-    //       "answerindex": 3
-    //     },
-    //     {
-    //       "level": "3",
-    //       "question": "what is the color of the tomato?",
-    //       "options": ["red", "blue", "black", "white"],
-    //       "answerindex": 0
-    //     },
-    //     {
-    //       "level": "4",
-    //       "question": "what is the color of the your skin?",
-    //       "options": ["red", "blue", "black", "white"],
-    //       "answerindex": 2
-    //     },
-    //   ];
+  Future<void> fetchData() async {
+    try {
+      var result = await http.get(Uri.parse(
+          "https://mrkalhor.github.io/api-for-quiz-time/Updated_Unique_Data.json"));
+      var jsonData = jsonDecode(result.body);
+      setState(() {
+        questions = jsonData['result'];
+        isLoading = false;
+      });
+    } catch (e) {
+      print("خطا در دریافت داده‌ها: $e");
+      setState(() {
+        isLoading = false;
+      });
+    }
   }
 
-  Future<List<dynamic>> fetchData() async {
-    var result = await http.get(Uri.parse("http://"));
-    questions = jsonDecode(result.body);
-    return questions;
-  }
-
+  @override
   void initState() {
     super.initState();
-    FetchQuestions();
+    fetchData();
   }
 
   void Validate(i) {
@@ -79,6 +63,22 @@ class _quizpageState extends State<quizpage> {
 
   @override
   Widget build(BuildContext context) {
+    if (isLoading) {
+      return Scaffold(
+        body: Center(
+          child: CircularProgressIndicator(),
+        ),
+      );
+    }
+
+    if (questions.isEmpty) {
+      return Scaffold(
+        body: Center(
+          child: Text("خطا در دریافت سوالات"),
+        ),
+      );
+    }
+
     return Scaffold(
       backgroundColor: Colors.lightBlueAccent,
       extendBodyBehindAppBar: true,
