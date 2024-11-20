@@ -31,10 +31,10 @@ class helppage extends StatelessWidget {
                           width: 40,
                         ),
                         Container(
-                          child: Icon(
-                            Icons.menu,
-                          ),
-                        )
+                            // child: Icon(
+                            //   Icons.menu,
+                            // ),
+                            )
                       ],
                     )
                     // Container(

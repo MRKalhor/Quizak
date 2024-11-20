@@ -12,8 +12,8 @@ class resultpage extends StatelessWidget {
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(colors: const [
-            Color.fromARGB(190, 0, 238, 255),
-            Color.fromARGB(160, 123, 16, 224),
+           Color.fromARGB(190, 0, 238, 255),
+            Color.fromARGB(104, 132, 0, 255),
             Color.fromARGB(190, 0, 238, 255)
           ])
         ),
