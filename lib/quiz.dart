@@ -65,10 +65,30 @@ class _quizpageState extends State<quizpage> {
   Widget build(BuildContext context) {
     if (isLoading) {
       return Scaffold(
-        body: Center(
-          child: CircularProgressIndicator(),
-        ),
-      );
+          body: Column(
+        children: [
+          Expanded(
+            child: Container(
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(colors: const [
+                Color.fromARGB(190, 0, 238, 255),
+                Color.fromARGB(104, 132, 0, 255),
+                Color.fromARGB(190, 0, 238, 255)
+              ])),
+              width: double.infinity,
+              height: 200,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: const [
+                  Center(
+                    child: CircularProgressIndicator(),
+                  )
+                ],
+              ),
+            ),
+          )
+        ],
+      ));
     }
 
     if (questions.isEmpty) {
@@ -108,7 +128,7 @@ class _quizpageState extends State<quizpage> {
               decoration: BoxDecoration(
                   gradient: LinearGradient(colors: const [
                 Color.fromARGB(190, 0, 238, 255),
-                Color.fromARGB(160, 123, 16, 224),
+                Color.fromARGB(104, 132, 0, 255),
                 Color.fromARGB(190, 0, 238, 255)
               ])),
               width: double.infinity,
