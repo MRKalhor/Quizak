@@ -65,38 +65,60 @@ class _quizpageState extends State<quizpage> {
   Widget build(BuildContext context) {
     if (isLoading) {
       return Scaffold(
+          backgroundColor: Colors.lightBlueAccent,
           body: Column(
-        children: [
-          Expanded(
-            child: Container(
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(colors: const [
-                Color.fromARGB(190, 0, 238, 255),
-                Color.fromARGB(104, 132, 0, 255),
-                Color.fromARGB(190, 0, 238, 255)
-              ])),
-              width: double.infinity,
-              height: 200,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: const [
-                  Center(
-                    child: CircularProgressIndicator(),
-                  )
-                ],
-              ),
-            ),
-          )
-        ],
-      ));
+            children: [
+              Expanded(
+                child: Container(
+                  decoration: BoxDecoration(
+                      gradient: LinearGradient(colors: const [
+                    Color.fromARGB(190, 0, 238, 255),
+                    Color.fromARGB(104, 132, 0, 255),
+                    Color.fromARGB(190, 0, 238, 255)
+                  ])),
+                  width: double.infinity,
+                  height: 200,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: const [
+                      Center(
+                        child: CircularProgressIndicator(),
+                      )
+                    ],
+                  ),
+                ),
+              )
+            ],
+          ));
     }
 
     if (questions.isEmpty) {
       return Scaffold(
-        body: Center(
-          child: Text("failed to take data"),
-        ),
-      );
+          backgroundColor: Colors.lightBlueAccent,
+          body: Column(
+            children: [
+              Expanded(
+                child: Container(
+                  decoration: BoxDecoration(
+                      gradient: LinearGradient(colors: const [
+                    Color.fromARGB(190, 0, 238, 255),
+                    Color.fromARGB(104, 132, 0, 255),
+                    Color.fromARGB(190, 0, 238, 255)
+                  ])),
+                  width: double.infinity,
+                  height: 200,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: const [
+                      Center(
+                        child: Text("failed to take data"),
+                      )
+                    ],
+                  ),
+                ),
+              )
+            ],
+          ));
     }
 
     return Scaffold(
@@ -111,18 +133,6 @@ class _quizpageState extends State<quizpage> {
       body: Column(
         // mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Container(
-            width: double.infinity,
-            height: 550,
-            color: Colors.lightBlueAccent,
-            child: Center(
-              child: Text(
-                (questions)[index]['question'],
-                style: TextStyle(
-                    fontSize: 25, color: const Color.fromARGB(255, 0, 0, 0)),
-              ),
-            ),
-          ),
           Expanded(
             child: Container(
               decoration: BoxDecoration(
@@ -138,6 +148,26 @@ class _quizpageState extends State<quizpage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: const Color.fromARGB(255, 69, 115, 241),
+                    ),
+                    width: 400,
+                    height: 300,
+                    // color: Colors.lightBlueAccent,
+                    child: Center(
+                      child: Text(
+                        (questions)[index]['question'],
+                        style: TextStyle(
+                            fontSize: 25,
+                            color: const Color.fromARGB(255, 0, 0, 0)),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 200,
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
