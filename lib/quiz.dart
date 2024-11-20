@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 
 import "package:flutter/material.dart";
 import 'package:http/http.dart' as http;
@@ -12,6 +13,7 @@ class quizpage extends StatefulWidget {
 
 class _quizpageState extends State<quizpage> {
   var questions = [];
+  var randomNumbers = <int>[];
   var index = 0;
   var rightanswercount = 0;
   var falseanswercount = 0;
@@ -34,21 +36,40 @@ class _quizpageState extends State<quizpage> {
     }
   }
 
+  void generateRandomNumbers() {
+    final random = Random();
+    final numbers = <int>[];
+
+    while (numbers.length < 5) {
+      int randomNumber = random.nextInt(questions.length);
+      if (!numbers.contains(randomNumber)) {
+        numbers.add(randomNumber);
+      }
+    }
+
+    setState(() {
+      randomNumbers = numbers;
+      index = 0;
+    });
+  }
+
   @override
   void initState() {
     super.initState();
-    fetchData();
+    fetchData().then((_) {
+      generateRandomNumbers();
+    });
   }
 
   void Validate(i) {
-    if (questions[index]['answerindex'] == i) {
+    if (questions[randomNumbers[index]]['answerindex'] == i) {
       setState(() {
         rightanswercount++;
       });
     } else {
       falseanswercount++;
     }
-    if (index < questions.length - 1) {
+    if (index < 4) {
       setState(() {
         index++;
       });
@@ -56,7 +77,7 @@ class _quizpageState extends State<quizpage> {
       Navigator.pushNamed(context, '/result', arguments: {
         'right': rightanswercount,
         'false': falseanswercount,
-        'total': questions.length,
+        'total': randomNumbers.length,
       });
     }
   }
@@ -154,15 +175,15 @@ class _quizpageState extends State<quizpage> {
                       color: const Color.fromARGB(255, 69, 115, 241),
                     ),
                     width: 400,
-                    height: 300,
+                    height: 200,
                     // color: Colors.lightBlueAccent,
                     child: Center(
-                      child: Text(
-                        (questions)[index]['question'],
-                        style: TextStyle(
-                            fontSize: 25,
-                            color: const Color.fromARGB(255, 0, 0, 0)),
-                      ),
+                      child: Text((questions)[randomNumbers[index]]['question'],
+                          style: TextStyle(
+                            fontSize: 30,
+                            color: Colors.white,
+                          ),
+                          textAlign: TextAlign.center),
                     ),
                   ),
                   SizedBox(
@@ -177,48 +198,57 @@ class _quizpageState extends State<quizpage> {
                           borderRadius: BorderRadius.all(Radius.circular(16.0)),
                           gradient: LinearGradient(
                             colors: [
-                              Color.fromARGB(255, 253, 255, 124),
-                              Color(0xFFFFBC2B),
-                              Color.fromARGB(255, 255, 174, 0),
-                              Color.fromARGB(255, 255, 174, 0),
-                              Color.fromARGB(255, 255, 174, 0)
+                              Color(0xFF4E65FF), // آبی روشن
+                              Color(0xFF8F55FF), // بنفش
+                              Color(0xFF6A3BFF),
                             ],
                           ),
                         ),
                         child: SizedBox(
-                            height: 60,
+                            height: 180,
                             width: 200,
                             child: MaterialButton(
                                 onPressed: () {
                                   Validate(0);
                                 },
-                                child: Text(questions[index]['options'][0]))),
+                                child: Text(
+                                    questions[randomNumbers[index]]['options']
+                                        [0],
+                                    style: TextStyle(
+                                      fontSize: 25,
+                                      color: Colors.white,
+                                    ),
+                                    textAlign: TextAlign.center))),
                       ),
                       SizedBox(
                         width: 20,
                       ),
                       Container(
-                        decoration: BoxDecoration(
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(16.0)),
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(16.0)),
                           gradient: LinearGradient(
-                            colors: const [
-                              Color.fromARGB(255, 253, 255, 124),
-                              Color(0xFFFFBC2B),
-                              Color.fromARGB(255, 255, 174, 0),
-                              Color.fromARGB(255, 255, 174, 0),
-                              Color.fromARGB(255, 255, 174, 0)
+                            colors: [
+                              Color(0xFF4E65FF), // آبی روشن
+                              Color(0xFF8F55FF), // بنفش
+                              Color(0xFF6A3BFF),
                             ],
                           ),
                         ),
                         child: SizedBox(
-                            height: 60,
+                            height: 180,
                             width: 200,
                             child: MaterialButton(
                                 onPressed: () {
                                   Validate(1);
                                 },
-                                child: Text(questions[index]['options'][1]))),
+                                child: Text(
+                                    questions[randomNumbers[index]]['options']
+                                        [1],
+                                    style: TextStyle(
+                                      fontSize: 25,
+                                      color: Colors.white,
+                                    ),
+                                    textAlign: TextAlign.center))),
                       ),
                     ],
                   ),
@@ -234,22 +264,27 @@ class _quizpageState extends State<quizpage> {
                           borderRadius: BorderRadius.all(Radius.circular(16.0)),
                           gradient: LinearGradient(
                             colors: [
-                              Color.fromARGB(255, 253, 255, 124),
-                              Color(0xFFFFBC2B),
-                              Color.fromARGB(255, 255, 174, 0),
-                              Color.fromARGB(255, 255, 174, 0),
-                              Color.fromARGB(255, 255, 174, 0)
+                              Color(0xFF4E65FF), // آبی روشن
+                              Color(0xFF8F55FF), // بنفش
+                              Color(0xFF6A3BFF),
                             ],
                           ),
                         ),
                         child: SizedBox(
-                            height: 60,
+                            height: 180,
                             width: 200,
                             child: MaterialButton(
                                 onPressed: () {
                                   Validate(2);
                                 },
-                                child: Text(questions[index]['options'][2]))),
+                                child: Text(
+                                    questions[randomNumbers[index]]['options']
+                                        [2],
+                                    style: TextStyle(
+                                      fontSize: 25,
+                                      color: Colors.white,
+                                    ),
+                                    textAlign: TextAlign.center))),
                       ),
                       SizedBox(
                         width: 20,
@@ -259,22 +294,27 @@ class _quizpageState extends State<quizpage> {
                           borderRadius: BorderRadius.all(Radius.circular(16.0)),
                           gradient: LinearGradient(
                             colors: [
-                              Color.fromARGB(255, 253, 255, 124),
-                              Color(0xFFFFBC2B),
-                              Color.fromARGB(255, 255, 174, 0),
-                              Color.fromARGB(255, 255, 174, 0),
-                              Color.fromARGB(255, 255, 174, 0)
+                              Color(0xFF4E65FF), // آبی روشن
+                              Color(0xFF8F55FF), // بنفش
+                              Color(0xFF6A3BFF),
                             ],
                           ),
                         ),
                         child: SizedBox(
-                            height: 60,
+                            height: 180,
                             width: 200,
                             child: MaterialButton(
                                 onPressed: () {
                                   Validate(3);
                                 },
-                                child: Text(questions[index]['options'][3]))),
+                                child: Text(
+                                    questions[randomNumbers[index]]['options']
+                                        [3],
+                                    style: TextStyle(
+                                      fontSize: 25,
+                                      color: Colors.white,
+                                    ),
+                                    textAlign: TextAlign.center))),
                       ),
                     ],
                   ),
