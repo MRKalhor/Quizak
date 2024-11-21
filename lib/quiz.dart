@@ -18,6 +18,7 @@ class _QuizPageState extends State<QuizPage> {
   var titlecount = 1;
   var rightanswercount = 0;
   var falseanswercount = 0;
+  var boolcolor;
   bool isLoading = true;
 
   Future<void> fetchData() async {
@@ -65,23 +66,31 @@ class _QuizPageState extends State<QuizPage> {
   void validate(i) {
     if (questions[randomNumbers[index]]['answerindex'] == i) {
       setState(() {
+        boolcolor = 1;
         rightanswercount++;
       });
     } else {
-      falseanswercount++;
-    }
-    if (index < 4) {
       setState(() {
-        index++;
-        titlecount++;
-      });
-    } else {
-      Navigator.pushNamed(context, '/result', arguments: {
-        'right': rightanswercount,
-        'false': falseanswercount,
-        'total': randomNumbers.length,
+        boolcolor = 2;
+        falseanswercount++;
       });
     }
+
+    Future.delayed(const Duration(milliseconds: 500), () {
+      if (index < 4) {
+        setState(() {
+          index++;
+          titlecount++;
+          boolcolor = 3;
+        });
+      } else {
+        Navigator.pushNamed(context, '/result', arguments: {
+          'right': rightanswercount,
+          'false': falseanswercount,
+          'total': randomNumbers.length,
+        });
+      }
+    });
   }
 
   @override
@@ -174,9 +183,26 @@ class _QuizPageState extends State<QuizPage> {
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: const Color.fromARGB(255, 69, 115, 241),
-                    ),
+                        borderRadius: BorderRadius.circular(20),
+                        color: const Color.fromARGB(255, 69, 115, 241),
+                        border: Border.all(
+                            color: boolcolor == 1
+                                ? Colors.green
+                                : boolcolor == 2
+                                    ? Colors.red
+                                    : Colors.transparent),
+                        boxShadow: [
+                          BoxShadow(
+                            color: boolcolor == 1
+                                ? Colors.green
+                                : boolcolor == 2
+                                    ? Colors.red
+                                    : Colors.transparent,
+                            spreadRadius: 5,
+                            blurRadius: 9,
+                            offset: const Offset(0, 3),
+                          ),
+                        ]),
                     width: 400,
                     height: 200,
                     // color: Colors.lightBlueAccent,

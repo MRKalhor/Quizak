@@ -7,12 +7,12 @@ class HelpPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.lightBlueAccent,
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        foregroundColor: Colors.black,
-      ),
+      // extendBodyBehindAppBar: false,
+      // appBar: AppBar(
+      //   backgroundColor: Colors.transparent,
+      //   elevation: 0,
+      //   foregroundColor: Colors.black,
+      // ),
       body: SizedBox(
         width: double.infinity,
         child: Column(

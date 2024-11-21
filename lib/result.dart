@@ -11,12 +11,11 @@ class Resultpage extends StatelessWidget {
       backgroundColor: Colors.lightBlueAccent,
       body: Container(
         decoration: BoxDecoration(
-          gradient: LinearGradient(colors: const [
-           Color.fromARGB(190, 0, 238, 255),
-            Color.fromARGB(104, 132, 0, 255),
-            Color.fromARGB(190, 0, 238, 255)
-          ])
-        ),
+            gradient: LinearGradient(colors: const [
+          Color.fromARGB(190, 0, 238, 255),
+          Color.fromARGB(104, 132, 0, 255),
+          Color.fromARGB(190, 0, 238, 255)
+        ])),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -32,7 +31,7 @@ class Resultpage extends StatelessWidget {
               ),
               SizedBox(height: 20),
               Text(
-                "پاسخ‌های نادرست: ${data['false']}", 
+                "پاسخ‌های نادرست: ${data['false']}",
                 style: TextStyle(fontSize: 24),
               ),
               SizedBox(height: 20),
@@ -43,25 +42,23 @@ class Resultpage extends StatelessWidget {
               SizedBox(height: 50),
               Container(
                 decoration: ShapeDecoration(
-                  shape: StadiumBorder(),
-                  gradient: LinearGradient(colors: const [
-                    Color.fromARGB(255, 253, 255, 124),
-                    Color(0xFFFFBC2B),
-                    Color.fromARGB(255, 255, 174, 0),
-                  ])
-                ),
+                    shape: StadiumBorder(),
+                    gradient: LinearGradient(colors: const [
+                      Color(0xFF4E65FF), // آبی روشن
+                      Color(0xFF8F55FF), // بنفش
+                      Color(0xFF6A3BFF),
+                    ])),
                 child: SizedBox(
                   height: 60,
                   width: 350,
                   child: MaterialButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/home');
-                    },
-                    child: Text(
-                      "بازگشت به صفحه اصلی",
-                      style: TextStyle(fontSize: 20),
-                    )
-                  ),
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/home');
+                      },
+                      child: Text(
+                        "شروع دوباره",
+                        style: TextStyle(fontSize: 30, color: Colors.white),
+                      )),
                 ),
               ),
             ],
