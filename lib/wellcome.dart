@@ -44,11 +44,9 @@ class wellcomepage extends StatelessWidget {
                   decoration: ShapeDecoration(
                       shape: StadiumBorder(),
                       gradient: LinearGradient(colors: const [
-                        Color.fromARGB(255, 253, 255, 124),
-                        Color(0xFFFFBC2B),
-                        Color.fromARGB(255, 255, 174, 0),
-                        Color.fromARGB(255, 255, 174, 0),
-                        Color.fromARGB(255, 255, 174, 0)
+                        Color(0xFF4E65FF), // آبی روشن
+                        Color(0xFF8F55FF), // بنفش
+                        Color(0xFF6A3BFF),
                       ])),
                   child: SizedBox(
                       height: 60,
@@ -57,7 +55,13 @@ class wellcomepage extends StatelessWidget {
                           onPressed: () {
                             Navigator.pushNamed(context, '/quiz');
                           },
-                          child: Text("Play"))),
+                          child: Text(
+                            "شروع",
+                            style: TextStyle(
+                                fontStyle: FontStyle.normal,
+                                fontSize: 30,
+                                color: Colors.white),
+                          ))),
                 ),
                 SizedBox(
                   height: 30,
@@ -75,9 +79,9 @@ class wellcomepage extends StatelessWidget {
                           shape: WidgetStateProperty.all(RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20)))),
                       child: Text(
-                        "How To Play",
+                        "راهنما ",
                         style: TextStyle(
-                            fontStyle: FontStyle.italic, fontSize: 20),
+                            fontStyle: FontStyle.normal, fontSize: 30),
                       ),
                     )),
               ],
