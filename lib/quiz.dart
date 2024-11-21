@@ -4,17 +4,18 @@ import 'dart:math';
 import "package:flutter/material.dart";
 import 'package:http/http.dart' as http;
 
-class quizpage extends StatefulWidget {
-  const quizpage({super.key});
+class QuizPage extends StatefulWidget {
+  const QuizPage({super.key});
 
   @override
-  State<quizpage> createState() => _quizpageState();
+  State<QuizPage> createState() => _QuizPageState();
 }
 
-class _quizpageState extends State<quizpage> {
+class _QuizPageState extends State<QuizPage> {
   var questions = [];
   var randomNumbers = <int>[];
   var index = 0;
+  var titlecount = 1;
   var rightanswercount = 0;
   var falseanswercount = 0;
   bool isLoading = true;
@@ -29,7 +30,7 @@ class _quizpageState extends State<quizpage> {
         isLoading = false;
       });
     } catch (e) {
-      print("Eror failed to take data $e");
+      Text("Eror failed to take data $e");
       setState(() {
         isLoading = false;
       });
@@ -61,7 +62,7 @@ class _quizpageState extends State<quizpage> {
     });
   }
 
-  void Validate(i) {
+  void validate(i) {
     if (questions[randomNumbers[index]]['answerindex'] == i) {
       setState(() {
         rightanswercount++;
@@ -72,6 +73,7 @@ class _quizpageState extends State<quizpage> {
     if (index < 4) {
       setState(() {
         index++;
+        titlecount++;
       });
     } else {
       Navigator.pushNamed(context, '/result', arguments: {
@@ -146,6 +148,7 @@ class _quizpageState extends State<quizpage> {
       backgroundColor: Colors.lightBlueAccent,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
+        title: Text("Question $titlecount of ${randomNumbers.length}"),
         backgroundColor: Colors.transparent,
         elevation: 0,
         // title: Text("${"Level " + questions[index]['level']} of 4"),
@@ -209,7 +212,7 @@ class _quizpageState extends State<quizpage> {
                             width: 200,
                             child: MaterialButton(
                                 onPressed: () {
-                                  Validate(0);
+                                  validate(0);
                                 },
                                 child: Text(
                                     questions[randomNumbers[index]]['options']
@@ -239,7 +242,7 @@ class _quizpageState extends State<quizpage> {
                             width: 200,
                             child: MaterialButton(
                                 onPressed: () {
-                                  Validate(1);
+                                  validate(1);
                                 },
                                 child: Text(
                                     questions[randomNumbers[index]]['options']
@@ -275,7 +278,7 @@ class _quizpageState extends State<quizpage> {
                             width: 200,
                             child: MaterialButton(
                                 onPressed: () {
-                                  Validate(2);
+                                  validate(2);
                                 },
                                 child: Text(
                                     questions[randomNumbers[index]]['options']
@@ -305,7 +308,7 @@ class _quizpageState extends State<quizpage> {
                             width: 200,
                             child: MaterialButton(
                                 onPressed: () {
-                                  Validate(3);
+                                  validate(3);
                                 },
                                 child: Text(
                                     questions[randomNumbers[index]]['options']

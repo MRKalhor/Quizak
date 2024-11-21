@@ -14,12 +14,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: wellcomepage(),
+      home: WellcomePage(),
       routes: {
-        '/help': (context) => helppage(),
-        '/home': (context) => wellcomepage(),
-        '/quiz': (context) => quizpage(),
-        '/result': (context) => resultpage(),
+        '/help': (context) => HelpPage(),
+        '/home': (context) => WellcomePage(),
+        '/quiz': (context) => QuizPage(),
+        '/result': (context) => Resultpage(),
       },
     );
   }

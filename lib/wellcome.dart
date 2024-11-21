@@ -1,8 +1,8 @@
 import "package:flutter/material.dart";
 
 // ignore: camel_case_types
-class wellcomepage extends StatelessWidget {
-  const wellcomepage({super.key});
+class WellcomePage extends StatelessWidget {
+  const WellcomePage({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class helppage extends StatelessWidget {
-  const helppage({super.key});
+class HelpPage extends StatelessWidget {
+  const HelpPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -148,7 +148,7 @@ Widget _container(String title, String about) {
     height: 150,
     margin: const EdgeInsets.all(20),
     decoration: BoxDecoration(
-      gradient: LinearGradient(
+      gradient: const LinearGradient(
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
         colors: [

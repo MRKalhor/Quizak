@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class resultpage extends StatelessWidget {
-  const resultpage({super.key});
+class Resultpage extends StatelessWidget {
+  const Resultpage({super.key});
 
   @override
   Widget build(BuildContext context) {
