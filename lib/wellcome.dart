@@ -23,20 +23,23 @@ class WellcomePage extends StatelessWidget {
                   height: 80,
                 ),
                 Image.asset(
-                  "assets/google-quiz.png",
+                  "assets/Asset.svg",
                   width: 300,
                 ),
                 SizedBox(
                   height: 60,
                 ),
-                Text("Wellcome To Quize Game App"),
+                Text(
+                  "خوش اومدید به کویزک",
+                  style: TextStyle(fontSize: 22, color: Colors.white),
+                ),
                 SizedBox(
                   height: 80,
                 ),
-                Image.asset(
-                  "assets/logo_web.png",
-                  width: 200,
-                ),
+                // Image.asset(
+                //   "assets/logo_web.png",
+                //   width: 200,
+                // ),
                 SizedBox(
                   height: 100,
                 ),
