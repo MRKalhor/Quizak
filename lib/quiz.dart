@@ -18,6 +18,7 @@ class _QuizPageState extends State<QuizPage> {
   var titlecount = 1;
   var rightanswercount = 0;
   var falseanswercount = 0;
+  // ignore: prefer_typing_uninitialized_variables
   var boolcolor;
   bool isLoading = true;
 
@@ -84,6 +85,7 @@ class _QuizPageState extends State<QuizPage> {
           boolcolor = 3;
         });
       } else {
+        // ignore: use_build_context_synchronously
         Navigator.pushNamed(context, '/result', arguments: {
           'right': rightanswercount,
           'false': falseanswercount,

@@ -23,7 +23,7 @@ class WellcomePage extends StatelessWidget {
                   height: 80,
                 ),
                 Image.asset(
-                  "assets/Asset.svg",
+                  "assets/Asset~1.png",
                   width: 300,
                 ),
                 SizedBox(
