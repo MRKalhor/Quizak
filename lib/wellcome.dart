@@ -20,14 +20,14 @@ class WellcomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 SizedBox(
-                  height: 80,
+                  height: 60,
                 ),
                 Image.asset(
-                  "assets/Asset~1.png",
-                  width: 300,
+                  "assets/Artboard 1@3x.png",
+                  width: 350,
                 ),
                 SizedBox(
-                  height: 60,
+                  height: 20,
                 ),
                 Text(
                   "خوش اومدید به کویزک",
