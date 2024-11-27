@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import '/savefail.dart';
 import '/result.dart';
 import '/help.dart';
 import '/quiz.dart';
-import 'wellcome.dart';
-import 'responsiv.dart';
+import '/wellcome.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         '/home': (context) => WellcomePage(),
         '/quiz': (context) => QuizPage(),
         '/result': (context) => Resultpage(),
-        '/responsive': (context) => Responsive(),
+        '/savefail': (context) => SaveFail(),
       },
     );
   }

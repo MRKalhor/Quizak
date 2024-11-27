@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
-class Responsive extends StatefulWidget {
-  const Responsive({super.key});
+class SaveFail extends StatefulWidget {
+  const SaveFail({super.key});
 
   @override
-  State<Responsive> createState() => _ResponsiveState();
+  State<SaveFail> createState() => _SaveFailState();
 }
 
-class _ResponsiveState extends State<Responsive> {
+int s = Random().nextInt(1000);
+
+class _SaveFailState extends State<SaveFail> {
   @override
   Widget build(BuildContext context) {
     var current = MediaQuery.of(context).size.width;
     return Scaffold(
+      appBar: AppBar(
+        title: Text("SaveFail"),
+      ),
       body: Expanded(
         child: Container(
           width: double.infinity,
@@ -35,7 +41,12 @@ class _ResponsiveState extends State<Responsive> {
                               Color.fromARGB(255, 78, 249, 255),
                               Color.fromARGB(255, 255, 85, 241),
                             ])),
-          child: Text(current.toString()),
+          child: Column(
+            children: [
+              Text(current.toString()),
+              for (int i = 0; i < s; i++) Text(i.toString()),
+            ],
+          ),
         ),
       ),
     );

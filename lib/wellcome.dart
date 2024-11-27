@@ -89,9 +89,9 @@ class WellcomePage extends StatelessWidget {
                     )),
                 ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, '/responsive');
+                      Navigator.pushNamed(context, '/savefail');
                     },
-                    child: Text("responsive"))
+                    child: Text("SaveFail"))
               ],
             ),
           ),

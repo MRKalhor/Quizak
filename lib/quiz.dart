@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:math';
-
 import "package:flutter/material.dart";
 import 'package:http/http.dart' as http;
 
@@ -18,6 +17,7 @@ class _QuizPageState extends State<QuizPage> {
   var titlecount = 1;
   var rightanswercount = 0;
   var falseanswercount = 0;
+  var savefail = 0;
   // ignore: prefer_typing_uninitialized_variables
   var boolcolor;
   bool isLoading = true;
@@ -74,9 +74,10 @@ class _QuizPageState extends State<QuizPage> {
       setState(() {
         boolcolor = 2;
         falseanswercount++;
+        savefail++;
       });
     }
-
+    
     Future.delayed(const Duration(milliseconds: 500), () {
       if (index < 4) {
         setState(() {
@@ -91,6 +92,10 @@ class _QuizPageState extends State<QuizPage> {
           'false': falseanswercount,
           'total': randomNumbers.length,
         });
+      }
+      if (savefail == 3) {
+        // ignore: use_build_context_synchronously
+        Navigator.pushNamed(context, '/savefail');
       }
     });
   }
