@@ -87,6 +87,11 @@ class WellcomePage extends StatelessWidget {
                             fontStyle: FontStyle.normal, fontSize: 30),
                       ),
                     )),
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/responsive');
+                    },
+                    child: Text("responsive"))
               ],
             ),
           ),
