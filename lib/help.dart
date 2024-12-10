@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HelpPage extends StatelessWidget {
   const HelpPage({super.key});
@@ -7,43 +8,50 @@ class HelpPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.lightBlueAccent,
-      // extendBodyBehindAppBar: false,
-      // appBar: AppBar(
-      //   backgroundColor: Colors.transparent,
-      //   elevation: 0,
-      //   foregroundColor: Colors.black,
-      // ),
-      body: SizedBox(
-        width: double.infinity,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            _container(
-                "هدف بازی", "در این بازی شما باید کلمات را به درستی حدس بزنید"),
-            _container(
-                "نحوه بازی", "با کلیک روی حروف، کلمه مورد نظر را بسازید"),
-            _container("امتیازات", "با هر حدس درست ۱۰ امتیاز دریافت می‌کنید"),
-            _container("راهنمایی",
-                "از راهنمایی‌های موجود برای حدس کلمات استفاده کنید"),
-            SizedBox(height: 10),
-            SizedBox(
-                height: 60,
-                width: 350,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/home');
-                  },
-                  style: ButtonStyle(
-                      backgroundColor: WidgetStateProperty.all(Colors.white),
-                      shape: WidgetStateProperty.all(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20)))),
-                  child: Text(
-                    "برگشت ",
-                    style: TextStyle(fontStyle: FontStyle.normal, fontSize: 30),
-                  ),
-                )),
-          ],
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(colors: const [
+            Color.fromARGB(190, 0, 238, 255),
+            Color.fromARGB(104, 132, 0, 255),
+            Color.fromARGB(190, 0, 238, 255)
+          ]),
+        ),
+        child: SizedBox(
+          width: double.infinity,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              _container("هدف بازی",
+                  "این بازی برای به چالش کشیدن و مهک زدن اطلاعات عمومی شماست"),
+              _container("نحوه بازی",
+                  "شما باید جواب درست رو حدس بزنید  و جواب درست رو انتخاب کنید در صورت درست بودن جواب شما چرا غ سبز ور در صورت اشتباه بودن چراغ قرمز برای شما روشن می شود"),
+              _container("امتیازات", "با هر حدس  درست 1 امتیاز دریافت می‌کنید"),
+              SizedBox(height: 10.r),
+              Container(
+                  decoration: ShapeDecoration(
+                      shape: StadiumBorder(),
+                      gradient: LinearGradient(colors: const [
+                        Color(0xFF4E65FF), // آبی روشن
+                        Color(0xFF8F55FF), // بنفش
+                        Color(0xFF6A3BFF),
+                      ])),
+                  child: SizedBox(
+                      height: 60.r,
+                      width: 350.r,
+                      child: MaterialButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/home');
+                          },
+                          child: Text(
+                            "برگشت",
+                            style: TextStyle(
+                                fontStyle: FontStyle.normal,
+                                fontSize: 30.r,
+                                color: Colors.white),
+                          )))),
+            ],
+          ),
         ),
       ),
     );
@@ -52,10 +60,10 @@ class HelpPage extends StatelessWidget {
 
 Widget _container(String title, String about) {
   return Container(
-    width: 330,
-    height: 150,
-    margin: const EdgeInsets.all(20),
-    padding: EdgeInsets.all(5),
+    width: 400.r,
+    // height: 200.r,
+    margin: EdgeInsets.all(10.r),
+    padding: EdgeInsets.all(5.r),
     decoration: BoxDecoration(
       gradient: const LinearGradient(
         begin: Alignment.topLeft,
@@ -69,11 +77,11 @@ Widget _container(String title, String about) {
       boxShadow: [
         BoxShadow(
           color: Colors.black.withOpacity(0.1),
-          blurRadius: 10,
-          spreadRadius: 2,
+          blurRadius: 10.r,
+          spreadRadius: 2.r,
         ),
       ],
-      borderRadius: BorderRadius.circular(20),
+      borderRadius: BorderRadius.circular(20.r),
     ),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -81,16 +89,16 @@ Widget _container(String title, String about) {
         Text(
           title,
           style: TextStyle(
-            fontSize: 30,
+            fontSize: 22.r,
             color: Colors.white,
             fontWeight: FontWeight.bold,
           ),
         ),
-        SizedBox(height: 10),
+        // SizedBox(height: 10.r),
         Text(
           about,
           style: TextStyle(
-            fontSize: 22,
+            fontSize: 18.r,
             color: Colors.white.withOpacity(0.9),
           ),
           textAlign: TextAlign.center,

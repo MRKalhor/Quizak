@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-// ignore: camel_case_types
 class WellcomePage extends StatelessWidget {
   const WellcomePage({super.key});
 
@@ -20,81 +20,93 @@ class WellcomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 SizedBox(
-                  height: 60,
+                  height: 60.h,
                 ),
-                Image.asset(
-                  "assets/Artboard 1@3x.png",
-                  width: 350,
+                Flexible(
+                  child: Image.asset(
+                    "assets/Artboard 1@3x.png",
+                    width: 300.w,
+                    height: 200.h,
+                  ),
                 ),
-                SizedBox(
-                  height: 20,
+                Expanded(
+                  child: SizedBox(
+                    height: 100.h,
+                  ),
                 ),
                 Text(
                   "خوش اومدید به کویزک",
-                  style: TextStyle(fontSize: 22, color: Colors.white),
+                  style: TextStyle(fontSize: 22.r, color: Colors.white),
                 ),
-                SizedBox(
-                  height: 80,
-                ),
-                // Image.asset(
-                //   "assets/logo_web.png",
-                //   width: 200,
-                // ),
-                SizedBox(
-                  height: 100,
-                ),
-                Container(
-                  decoration: ShapeDecoration(
-                      shape: StadiumBorder(),
-                      gradient: LinearGradient(colors: const [
-                        Color(0xFF4E65FF), // آبی روشن
-                        Color(0xFF8F55FF), // بنفش
-                        Color(0xFF6A3BFF),
-                      ])),
+                Expanded(
                   child: SizedBox(
-                      height: 60,
-                      width: 350,
-                      child: MaterialButton(
-                          onPressed: () {
-                            Navigator.pushNamed(context, '/quiz');
-                          },
-                          child: Text(
-                            "شروع",
-                            style: TextStyle(
-                                fontStyle: FontStyle.normal,
-                                fontSize: 30,
-                                color: Colors.white),
-                          ))),
+                    height: 100.h,
+                  ),
+                ),
+                Flexible(
+                  child: Container(
+                    decoration: ShapeDecoration(
+                        shape: StadiumBorder(),
+                        gradient: LinearGradient(colors: const [
+                          Color(0xFF4E65FF), // آبی روشن
+                          Color(0xFF8F55FF), // بنفش
+                          Color(0xFF6A3BFF),
+                        ])),
+                    child: SizedBox(
+                        height: 60.h,
+                        width: 300.w,
+                        child: MaterialButton(
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/quiz');
+                            },
+                            child: Text(
+                              "شروع",
+                              style: TextStyle(
+                                  fontStyle: FontStyle.normal,
+                                  fontSize: 30.r,
+                                  color: Colors.white),
+                            ))),
+                  ),
                 ),
                 SizedBox(
-                  height: 30,
+                  height: 30.h,
                 ),
-                SizedBox(
-                    height: 60,
-                    width: 350,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/help');
-                      },
-                      style: ButtonStyle(
-                          backgroundColor:
-                              WidgetStateProperty.all(Colors.white),
-                          shape: WidgetStateProperty.all(RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20)))),
-                      child: Text(
-                        "راهنما ",
-                        style: TextStyle(
-                            fontStyle: FontStyle.normal, fontSize: 30),
-                      ),
-                    )),
-                ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/savefail');
-                    },
-                    child: Text("SaveFail"))
+                Flexible(
+                  child: SizedBox(
+                      height: 60.h,
+                      width: 300.w,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/help');
+                        },
+                        style: ButtonStyle(
+                            backgroundColor:
+                                WidgetStateProperty.all(Colors.white),
+                            shape: WidgetStateProperty.all(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20)))),
+                        child: Text(
+                          "راهنما ",
+                          style: TextStyle(
+                              fontStyle: FontStyle.normal, fontSize: 30.r),
+                        ),
+                      )),
+                ),
+                Expanded(
+                    child: SizedBox(
+                  height: 20.h,
+                ))
               ],
             ),
           ),
         ));
   }
+}
+
+Widget build(BuildContext context) {
+  return ScreenUtilInit(
+    enableScaleWH: () => true,
+    enableScaleText: () => false,
+    //...
+  );
 }

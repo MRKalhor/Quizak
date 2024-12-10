@@ -8,7 +8,7 @@ class SaveFail extends StatefulWidget {
   State<SaveFail> createState() => _SaveFailState();
 }
 
-int s = Random().nextInt(1000);
+int s = Random().nextInt(10);
 
 class _SaveFailState extends State<SaveFail> {
   @override
