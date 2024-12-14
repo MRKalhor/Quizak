@@ -19,7 +19,7 @@ jobs:
     - name: Install Flutter
       uses: subosito/flutter-action@v2
       with:
-        flutter-version: '3.13.6' # یا نسخه Flutter مورد نیاز شما
+        flutter-version: '3.13.6'
 
     - name: Fetch dependencies
       run: flutter pub get
