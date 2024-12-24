@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:math';
 import "package:flutter/material.dart";
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

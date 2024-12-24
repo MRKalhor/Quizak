@@ -4,7 +4,6 @@ import '/result.dart';
 import '/help.dart';
 import '/quiz.dart';
 import '/wellcome.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 // PUB_HOSTED_URL set user path: https://pub.flutter-io.cn
 

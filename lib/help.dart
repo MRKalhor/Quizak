@@ -76,7 +76,7 @@ Widget _container(String title, String about) {
       ),
       boxShadow: [
         BoxShadow(
-          color: Colors.black.withOpacity(0.1),
+          color: Colors.black,
           blurRadius: 10.r,
           spreadRadius: 2.r,
         ),
@@ -99,7 +99,7 @@ Widget _container(String title, String about) {
           about,
           style: TextStyle(
             fontSize: 18.r,
-            color: Colors.white.withOpacity(0.9),
+            color: Colors.white,
           ),
           textAlign: TextAlign.center,
         ),
