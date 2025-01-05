@@ -41,6 +41,26 @@ class Resultpage extends StatelessWidget {
               ),
               SizedBox(height: 50),
               Container(
+                  decoration: ShapeDecoration(
+                      shape: StadiumBorder(),
+                      gradient: LinearGradient(colors: const [
+                        Color(0xFF4E65FF), // آبی روشن
+                        Color(0xFF8F55FF), // بنفش
+                        Color(0xFF6A3BFF),
+                      ])),
+                  child: SizedBox(
+                      height: 60,
+                      width: 350,
+                      child: MaterialButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/home');
+                          },
+                          child: Text(
+                            "شروع دوباره",
+                            style: TextStyle(fontSize: 30, color: Colors.white),
+                          )))),
+              SizedBox(height: 50),
+              Container(
                 decoration: ShapeDecoration(
                     shape: StadiumBorder(),
                     gradient: LinearGradient(colors: const [
@@ -56,7 +76,7 @@ class Resultpage extends StatelessWidget {
                         Navigator.pushNamed(context, '/home');
                       },
                       child: Text(
-                        "شروع دوباره",
+                        "دیدن پاسخ سوال ها",
                         style: TextStyle(fontSize: 30, color: Colors.white),
                       )),
                 ),

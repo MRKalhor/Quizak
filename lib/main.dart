@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_first/forget.dart';
 import '/savefail.dart';
 import '/result.dart';
 import '/help.dart';
 import '/quiz.dart';
 import '/wellcome.dart';
+import 'profile.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 // PUB_HOSTED_URL set user path: https://pub.flutter-io.cn
 
@@ -40,6 +42,9 @@ class MyApp extends StatelessWidget {
             '/quiz': (context) => QuizPage(),
             '/result': (context) => Resultpage(),
             '/savefail': (context) => SaveFail(),
+            '/profile': (context) => ProfilePage(),
+            // '/login': (context) => LoginScreen(),
+            '/forge': (context) => ForgetPage(),
           },
         );
       },

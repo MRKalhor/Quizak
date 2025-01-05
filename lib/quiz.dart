@@ -121,6 +121,7 @@ class _QuizPageState extends State<QuizPage> {
             boolcolor = 3;
           });
         } else {
+          // ignore: use_build_context_synchronously
           await Navigator.pushNamed(context, '/result', arguments: {
             'right': rightanswercount,
             'false': falseanswercount,
